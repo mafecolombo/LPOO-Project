@@ -1,0 +1,18 @@
+/* estilo.css */
+.root {
+    -fx-background-color: #ffffff;
+}
+
+.button {
+    -fx-background-color: rgb(249, 112, 0);
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.tittle {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
