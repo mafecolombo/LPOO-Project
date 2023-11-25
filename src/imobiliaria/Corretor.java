@@ -11,7 +11,7 @@ public class Corretor extends Pessoa {
 
     @Override
     public String toString() {
-        return "Corretor " + super.getNome() + " Creci: " + creci;
+        return "Corretor " + super.getNome() + "[creci = " + creci + "]";
     }
     
 }

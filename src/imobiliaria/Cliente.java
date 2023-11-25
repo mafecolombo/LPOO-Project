@@ -11,7 +11,7 @@ public class Cliente extends Pessoa {
 
     @Override
     public String toString() {
-        return "Cliente " + super.getNome() + " Pontuação: " + pontuacao;
+        return "Cliente " + super.getNome() + "[pontuacao = " + pontuacao + "]";
     }
     
 }
