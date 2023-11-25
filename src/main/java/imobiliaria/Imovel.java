@@ -24,8 +24,9 @@ public class Imovel implements Comparable<Imovel> {
 
     @Override
     public String toString() {
-        return String.format("");
-    }
+        return "Imovel [tipo=" + tipo + ", endereco=" + endereco + ", area=" + area + ", preco=" + preco
+                + ", proprietario=" + proprietario + "]";
+    }    
     
     
     
