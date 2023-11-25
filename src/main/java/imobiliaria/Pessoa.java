@@ -26,12 +26,60 @@ public abstract class Pessoa implements Verificavel {
 	
 	@Override
 	public boolean validar(String cpf) {
-		try {
-            Integer.parseInt(cpf);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+		//https://www.campuscode.com.br/conteudos/o-calculo-do-digito-verificador-do-cpf-e-do-cnpj
+
+		int digitoCPF[] = new int[11];
+		
+		for (int i = 0; i < 11; i++) {
+			digitoCPF[i] = Character.getNumericValue(cpf.charAt(i));
+		}
+
+
+		int soma = 0;
+		int cont = 10;
+		int valor;
+		for (int i = 0; i < 9; i++){
+			valor = digitoCPF[i]*cont;
+			soma = soma + valor;
+			cont = cont - 1;
+		}
+
+		int resto = soma % 11;
+
+		int primeiroVerif = 11 - resto;
+
+		if(primeiroVerif >= 10){
+			primeiroVerif = 0;
+		}
+
+		if(primeiroVerif != digitoCPF[10]){
+			return false;
+		}
+
+
+		soma = 0;
+		cont = 11;
+		valor = 0;
+		for (int i = 0; i < 9; i++){
+			valor = digitoCPF[i]*cont;
+			soma = soma + valor;
+			cont = cont - 1;
+		}
+
+		resto = soma % 11;
+
+		int segundoVerif = 11 - resto;
+
+		if(segundoVerif >= 10){
+			segundoVerif = 0;
+		}
+
+		if(segundoVerif != digitoCPF[11]){
+			return false;
+		}
+
+		return true;
+
 	}
 
 	 @Override
