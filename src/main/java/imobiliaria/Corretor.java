@@ -3,9 +3,8 @@ package imobiliaria;
 public class Corretor extends Pessoa {
     private String creci;
 
-    public Corretor(String nome, String cpf, 
-    Endereco endereco, String celular, String creci) {
-        super(nome, cpf, endereco, celular);
+    public Corretor(String nome, String cpf, String rg, Endereco endereco, String celular, String dataNascimento, String creci) {
+        super(nome, cpf, rg, endereco, celular, dataNascimento);
         this.creci = creci;
     }
 

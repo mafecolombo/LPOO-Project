@@ -3,9 +3,8 @@ package imobiliaria;
 public class Cliente extends Pessoa {
     private int pontuacao;
 
-    public Cliente(String nome, String cpf, 
-    Endereco endereco, String celular, int pontuacao) {
-        super(nome, cpf, endereco, celular);
+    public Cliente(String nome, String cpf, String rg, Endereco endereco, String celular, String dataNascimento, int pontuacao) {
+        super(nome, cpf, rg, endereco, celular, dataNascimento);
         this.pontuacao = pontuacao;
     }
 

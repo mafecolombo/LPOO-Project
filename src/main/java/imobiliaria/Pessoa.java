@@ -10,10 +10,12 @@ public abstract class Pessoa implements Verificavel {
 	private String celular; 
 	private String dataNascimento;
 
-	public Pessoa(String nome, String cpf, Endereco endereco, String celular) {
+	public Pessoa(String nome, String cpf, String rg, Endereco endereco, String celular, String dataNascimento) {
 		this.nome = nome;   
 		this.endereco = endereco; 
 		this.celular = celular; 
+		this.rg = rg;
+		this.dataNascimento = dataNascimento;
 		
 		if (validar(cpf) == true) {
 			this.cpf = cpf;

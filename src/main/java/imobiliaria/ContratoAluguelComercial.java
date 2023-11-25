@@ -1,6 +1,6 @@
 package imobiliaria;
 
-public class ContratoAluguelComercial extends ContratoAluguel {
+public class ContratoAluguelComercial extends ContratoAluguel<Object> {
     
     private String razaoSocial;
     private String cnpj;
@@ -12,6 +12,5 @@ public class ContratoAluguelComercial extends ContratoAluguel {
         this.cnpj = cnpj;
     }
 
-    
     
 }

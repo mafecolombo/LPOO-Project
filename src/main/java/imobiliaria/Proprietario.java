@@ -3,9 +3,8 @@ package imobiliaria;
 public class Proprietario extends Pessoa {
     private String pix;
 
-    public Proprietario(String nome, String cpf, 
-    Endereco endereco, String celular, String pix) {
-        super(nome, cpf, endereco, celular);
+    public Proprietario(String nome, String cpf, String rg, Endereco endereco, String celular, String dataNascimento, String pix) {
+        super(nome, cpf, rg, endereco, celular, dataNascimento);
         this.pix = pix;
     }
 
