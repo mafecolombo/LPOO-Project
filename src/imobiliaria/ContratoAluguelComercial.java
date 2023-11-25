@@ -1,5 +1,9 @@
 package imobiliaria;
 
-public class ContratoAluguelComercial {
+public class ContratoAluguelComercial extends ContratoAluguel {
+    
+    private String razaoSocial;
+    private String cnpj;
+
     
 }
