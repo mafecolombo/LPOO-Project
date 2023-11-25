@@ -18,7 +18,7 @@ public class TipoImovel {
     }
 
     public int compareTo(String tipo2) {
-        return 0;
+        return this.tipo.compareTo(tipo2);
     }
 
 
