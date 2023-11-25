@@ -21,7 +21,12 @@ public class Imovel implements Comparable<Imovel> {
         // TODO Auto-generated method stub
         return this.tipo.compareTo(o.tipo.getTipo());
     }
-    
 
+    @Override
+    public String toString() {
+        return String.format("");
+    }
+    
+    
     
 }
