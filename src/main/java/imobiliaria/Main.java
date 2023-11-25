@@ -1,11 +1,12 @@
 package imobiliaria;
-
 import java.util.*;
 import javafx.application.Application;
 //import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 //import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 //import javafx.scene.layout.StackPane;
@@ -16,7 +17,23 @@ import javafx.scene.text.Text;
 public class Main extends Application {
 
     public static void main(String[] args) {
+        
+        ArrayList<TipoImovel> tiposImoveis = new ArrayList<TipoImovel>();
+        ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        ArrayList<Corretor> corretores = new ArrayList<Corretor>();
+        ArrayList<ContratoAluguel> contrato = new ArrayList<ContratoAluguel>();
+        ArrayList<ContratoAluguelComercial> contratosComerciais = new ArrayList<ContratoAluguelComercial>();
+        ArrayList<Imovel> imoveis = new ArrayList<Imovel>();
+
+        tiposImoveis.add(new TipoImovel("Casa"));
+        tiposImoveis.add(new TipoImovel("Sobrado"));
+        tiposImoveis.add(new TipoImovel("Apartamento"));
+        tiposImoveis.add(new TipoImovel("Muquifo"));
+        tiposImoveis.add(new TipoImovel("Escritorio"));
+        tiposImoveis.add(new TipoImovel("Tenda"));
         launch(args);
+
     }
 
     public void cadastrarEndereco(List<Endereco> enderecos, Stage primaryStage){
@@ -45,6 +62,8 @@ public class Main extends Application {
         submitButton.getStyleClass().add("button");
 
         submitButton.setOnAction(event -> {
+            
+            try{
             String rua = ruaInput.getText();
 
             String num = numeroInput.getText();
@@ -56,10 +75,22 @@ public class Main extends Application {
 
             String CEP = CEPInput.getText();
 
-            Endereco endereco = new Endereco(rua, numero, bairro, cidade, CEP);
-            enderecos.add(endereco);
+            enderecos.add(new Endereco(rua, numero, bairro, cidade, CEP));
+            
+            
+            
+            
+        }catch(NumberFormatException e){
+            Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Tela de Erro");
+        alert.setHeaderText("Ocorreu um erro!");
+        alert.setContentText("Detalhes do erro...");
 
-            start(primaryStage);
+        alert.showAndWait();
+    
+
+        }
+        start(primaryStage);
             
         });
 
