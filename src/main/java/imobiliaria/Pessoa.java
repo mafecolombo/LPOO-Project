@@ -2,6 +2,9 @@ package imobiliaria;
 
 import java.util.Scanner;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public abstract class Pessoa implements Verificavel {
 	private String nome; 
 	private String cpf; 
@@ -53,6 +56,12 @@ public abstract class Pessoa implements Verificavel {
 		}
 
 		if(primeiroVerif != digitoCPF[10]){
+			Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Tela de Erro");
+            alert.setHeaderText("Ocorreu um erro!");
+            alert.setContentText("CPF invalido");
+    
+            alert.showAndWait();
 			return false;
 		}
 
@@ -75,6 +84,12 @@ public abstract class Pessoa implements Verificavel {
 		}
 
 		if(segundoVerif != digitoCPF[11]){
+			Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Tela de Erro");
+            alert.setHeaderText("Ocorreu um erro!");
+            alert.setContentText("CPF invalido");
+    
+            alert.showAndWait();
 			return false;
 		}
 
