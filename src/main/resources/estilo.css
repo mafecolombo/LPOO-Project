@@ -16,3 +16,9 @@
     -fx-font-weight: bold;
     -fx-alignment: center;
 }
+
+.text {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+}
