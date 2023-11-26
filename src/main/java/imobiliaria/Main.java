@@ -712,7 +712,7 @@ public class Main extends Application {
     
 
         }
-        start(primaryStage);
+        menu(primaryStage, enderecos, clientes, corretores, proprietarios, contratosComerciais, imoveisDisp, imoveisManu, tiposImoveis);
             
         });
 
