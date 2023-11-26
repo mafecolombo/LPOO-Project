@@ -92,6 +92,13 @@ public class Main extends Application {
             cadastrarContrato(primaryStage, enderecos, clientes, corretores, proprietarios, contratosComerciais, imoveisDisp, imoveisManu, tiposImoveis);
         });
 
+        listarClientesButton.setOnAction(event -> {
+            listarclientes(clientes, primaryStage);
+        });
+
+        listarCorretoresButton.setOnAction(event ->{
+            listarcorretores(corretores, primaryStage);
+        });
     }
 
     public static void main(String[] args) {
@@ -412,214 +419,6 @@ public class Main extends Application {
                 celularCorreInput,
                 dataCorreText,
                 dataCorreInput,
-                submitButton
-        );
-
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(cadastrar);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-
-        Scene scene = new Scene(scrollPane, 1000, 500);
-        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-    }
-
-    public void listarclientes(List<Cliente> clientes, Stage primaryStage){
-        // Create table and columns
-        TableView<Cliente> table = new TableView<>();
-        TableColumn<Cliente, String> nomeCol = new TableColumn<>("Nome");
-        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));  // Assumes Cliente has a 'nome' property
-        table.getColumns().add(nomeCol);
-        
-    
-        // Populate table with clients
-        table.getItems().addAll(clientes);
-        
-    
-        // Create button to return to primary stage
-        Button returnButton = new Button("Return");
-        returnButton.setOnAction(event -> {start(primaryStage);
-;
-            // Code to return to primary stage goes here
-        });
-    
-        // Create VBox to hold table and button
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(table, returnButton);
-    
-        // Create scroll pane and add VBox to it
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(vbox);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-    
-        Scene scene = new Scene(scrollPane, 1000, 500);
-        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
-        table.prefWidthProperty().bind(scene.widthProperty().multiply(1));
-        
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-     public void listarcorretores(List<Corretor> corretores, Stage primaryStage){
-        // Create table and columns
-        TableView<Corretor> table = new TableView<>();
-        TableColumn<Corretor, String> nomeCol = new TableColumn<>("Nome");
-        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));  // Assumes Cliente has a 'nome' property
-        table.getColumns().add(nomeCol);
-        
-    
-        // Populate table with clients
-        table.getItems().addAll();
-        
-    
-        // Create button to return to primary stage
-        Button returnButton = new Button("Return");
-        returnButton.setOnAction(event -> {start(primaryStage);
-;
-            // Code to return to primary stage goes here
-        });
-    
-        // Create VBox to hold table and button
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(table, returnButton);
-    
-        // Create scroll pane and add VBox to it
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(vbox);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-    
-        Scene scene = new Scene(scrollPane, 1000, 500);
-        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
-        table.prefWidthProperty().bind(scene.widthProperty().multiply(1));
-        
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-
-    public void cadastrarCorretor(List<Corretor> corretores, List<Endereco> enderecos, Stage primaryStage){
-
-        Text nomeText = new Text("Nome: ");
-        nomeText.getStyleClass().add("text");
-        TextField nomeInput = new TextField();
-
-        Text cpfText = new Text("CPF: ");
-        cpfText.getStyleClass().add("text");
-        TextField cpfInput = new TextField();
-
-        Text rgText = new Text("RG: ");
-        rgText.getStyleClass().add("text");
-        TextField rgInput = new TextField();
-
-        Text enderecoTitle = new Text("ENDEREÇO");
-        enderecoTitle.getStyleClass().add("text");
-            Text RuaText = new Text("Rua: ");
-            RuaText.getStyleClass().add("text");
-            TextField ruaInput = new TextField();
-
-            Text NumeroText = new Text("Numero: ");
-            NumeroText.getStyleClass().add("text");
-            TextField numeroInput = new TextField();
-
-            Text BairroText = new Text("Bairro: ");
-            BairroText.getStyleClass().add("text");
-            TextField bairroInput = new TextField();
-
-            Text CidadeText = new Text("Cidade: ");
-            CidadeText.getStyleClass().add("text");
-            TextField cidadeInput = new TextField();
-
-            Text CEPText = new Text("CEP: ");
-            CEPText.getStyleClass().add("text");
-            TextField CEPInput = new TextField();
-
-        Text celularText = new Text("Celular: ");
-        celularText.getStyleClass().add("text");
-        TextField celularInput = new TextField();
-
-        Text dataText = new Text("Data de nascimento: ");
-        dataText.getStyleClass().add("text");
-        TextField dataInput = new TextField();
-
-        Text creciText = new Text("Creci: ");
-        creciText.getStyleClass().add("text");
-        TextField creciInput = new TextField();
-
-        Button submitButton = new Button("CADASTRAR");
-        submitButton.getStyleClass().add("button");
-
-        submitButton.setOnAction(event -> {
-            
-            try{
-            String rua = ruaInput.getText();
-
-            String num = numeroInput.getText();
-            int numero = Integer.parseInt(num);
-
-            String bairro = bairroInput.getText();
-
-            String cidade = cidadeInput.getText();
-
-            String CEP = CEPInput.getText();
-
-            Endereco endereco = new Endereco(rua, numero, bairro, cidade, CEP);
-            
-            String nome = nomeInput.getText();
-
-            String cpf = cpfInput.getText();
-
-            String rg = rgInput.getText();
-
-            String celular = celularInput.getText();
-
-            String data = dataInput.getText();
-
-            String creci = creciInput.getText();   
-            
-            corretores.add(new Corretor(nome, cpf, rg, endereco, celular, data, creci));
-            
-            
-        }catch(NumberFormatException e){
-            Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Tela de Erro");
-        alert.setHeaderText("Ocorreu um erro!");
-        alert.setContentText("Entrada inválida.");
-
-        alert.showAndWait();
-    
-
-        }
-        start(primaryStage);
-            
-        });
-
-
-        VBox cadastrar = new VBox(10);
-        cadastrar.getChildren().addAll(
-                nomeText,
-                nomeInput,
-                cpfText,
-                cpfInput,
-                rgText,
-                rgInput,
-                enderecoTitle,
-                RuaText,
-                ruaInput,
-                NumeroText,
-                numeroInput,
-                BairroText,
-                bairroInput,
-                CidadeText,
-                cidadeInput,
-                CEPText,
-                CEPInput,
-                celularText,
-                celularInput,
-                dataText,
-                dataInput,
                 creciText,
                 creciInput,
                 submitButton
@@ -712,7 +511,7 @@ public class Main extends Application {
     
 
         }
-        menu(primaryStage, enderecos, clientes, corretores, proprietarios, contratosComerciais, imoveisDisp, imoveisManu, tiposImoveis);
+        start(primaryStage);
             
         });
 
@@ -735,91 +534,6 @@ public class Main extends Application {
         tiposImoveis.add(new TipoImovel("Escritorio"));
         tiposImoveis.add(new TipoImovel("Tenda"));
 
-        Text tittleMenu = new Text("Bem-vindo ao Sistema de Controle de Imóveis");
-        Text space01 = new Text("");
-        Text space02 = new Text("");
-
-        Button cadastrarClientesButton = new Button("Cadastrar Clientes");
-        Button cadastrarCorretoresButton = new Button("Cadastrar Corretores");
-        Button cadastrarProprietariosButton = new Button("Cadastrar Proprietarios");
-        Button cadastrarContratosButton = new Button("Cadastrar Contratos");
-        Button cadastrarImoveisButton = new Button("Cadastrar Imoveis");
-
-        Button listarClientesButton = new Button("Listar Clientes");
-        Button listarCorretoresButton = new Button("Listar Corretores");
-        Button listarProprietariosButton = new Button("Listar Proprietarios");
-        Button listarContratosButton = new Button("Listar Contratos");
-        Button listarImoveisDisponiveisButton = new Button("Listar Imóveis Disponíveis");
-        Button listarImoveisManutencaoButton = new Button("Listar Imóveis em Manutenção");
-
-        // Aplicar estilos usando CSS
-        cadastrarClientesButton.getStyleClass().add("button");
-        cadastrarCorretoresButton.getStyleClass().add("button");
-        cadastrarProprietariosButton.getStyleClass().add("button");
-        cadastrarContratosButton.getStyleClass().add("button");
-        cadastrarImoveisButton.getStyleClass().add("button");
-
-        listarClientesButton.getStyleClass().add("button");
-        listarCorretoresButton.getStyleClass().add("button");
-        listarProprietariosButton.getStyleClass().add("button");
-        listarContratosButton.getStyleClass().add("button");
-        listarImoveisDisponiveisButton.getStyleClass().add("button");
-        listarImoveisManutencaoButton.getStyleClass().add("button");
-        tittleMenu.getStyleClass().add("tittle");
-
-
-        VBox cadastrar = new VBox(10);
-        cadastrar.setAlignment(Pos.CENTER);
-        cadastrar.getChildren().addAll(
-                cadastrarClientesButton,
-                cadastrarCorretoresButton,
-                cadastrarProprietariosButton,
-                cadastrarContratosButton,
-                cadastrarImoveisButton
-        );
-
-        VBox listar = new VBox(10);
-        listar.setAlignment(Pos.CENTER);
-        listar.getChildren().addAll(
-            listarClientesButton,
-            listarCorretoresButton,
-            listarProprietariosButton,
-            listarContratosButton,
-            listarImoveisDisponiveisButton,
-            listarImoveisManutencaoButton
-        );
-
-        VBox layout = new VBox(10);
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(
-            tittleMenu,
-            space01,
-            cadastrar,
-            space02,
-            listar
-        );
-
-        Scene scene = new Scene(layout, 1000, 500);
-        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-        // Adicione a lógica de eventos dos botões conforme necessário
-
-        cadastrarClientesButton.setOnAction(event -> {
-            cadastrarCliente(clientes, enderecos, primaryStage);
-        });
-
-        cadastrarCorretoresButton.setOnAction(event -> {
-            cadastrarCorretor(corretores, enderecos, primaryStage);
-        });
-
-
-        cadastrarImoveisButton.setOnAction(event -> {
-            cadastrarImoveis(imoveisDisp, imoveisManu, tiposImoveis, enderecos, proprietarios, primaryStage);
-        });
-
+        menu(primaryStage, enderecos, clientes, corretores, proprietarios, contratosComerciais, imoveisDisp, imoveisManu, tiposImoveis);
     }
-
 }
