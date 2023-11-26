@@ -40,63 +40,45 @@ public abstract class Pessoa implements Verificavel {
 		}
 
 
+		// First check digit
 		int soma = 0;
 		int cont = 10;
-		int valor;
 		for (int i = 0; i < 9; i++){
-			valor = digitoCPF[i]*cont;
-			soma = soma + valor;
-			cont = cont - 1;
+			soma += digitoCPF[i] * cont--;
 		}
 
 		int resto = soma % 11;
+		int primeiroVerif = (resto < 2) ? 0 : 11 - resto;
 
-		int primeiroVerif = 11 - resto;
-
-		if(primeiroVerif >= 10){
-			primeiroVerif = 0;
-		}
-
-		if(primeiroVerif != digitoCPF[10]){
+		if(primeiroVerif != digitoCPF[9]){
 			Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Tela de Erro");
-            alert.setHeaderText("Ocorreu um erro!");
-            alert.setContentText("CPF invalido");
-    
-            alert.showAndWait();
+			alert.setTitle("Tela de Erro");
+			alert.setHeaderText("Ocorreu um erro!");
+			alert.setContentText("CPF invalido");
+			alert.showAndWait();
 			return false;
 		}
 
-
+		// Second check digit
 		soma = 0;
 		cont = 11;
-		valor = 0;
-		for (int i = 0; i < 9; i++){
-			valor = digitoCPF[i]*cont;
-			soma = soma + valor;
-			cont = cont - 1;
+		for (int i = 0; i < 10; i++){
+			soma += digitoCPF[i] * cont--;
 		}
 
 		resto = soma % 11;
+		int segundoVerif = (resto < 2) ? 0 : 11 - resto;
 
-		int segundoVerif = 11 - resto;
-
-		if(segundoVerif >= 10){
-			segundoVerif = 0;
-		}
-
-		if(segundoVerif != digitoCPF[11]){
+		if(segundoVerif != digitoCPF[10]){
 			Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Tela de Erro");
-            alert.setHeaderText("Ocorreu um erro!");
-            alert.setContentText("CPF invalido");
-    
-            alert.showAndWait();
+			alert.setTitle("Tela de Erro");
+			alert.setHeaderText("Ocorreu um erro!");
+			alert.setContentText("CPF invalido");
+			alert.showAndWait();
 			return false;
 		}
 
 		return true;
-
 	}
 
 	 @Override

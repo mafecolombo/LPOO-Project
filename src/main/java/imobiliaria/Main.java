@@ -13,12 +13,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+//import javafx.scene.layout.BorderPane;
+//import javafx.scene.layout.StackPane;
 //import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class Main extends Application {
 
@@ -299,6 +303,79 @@ public class Main extends Application {
         primaryStage.show();
 
     }
+
+    public void listarclientes(List<Cliente> clientes, Stage primaryStage){
+        // Create table and columns
+        TableView<Cliente> table = new TableView<>();
+        TableColumn<Cliente, String> nomeCol = new TableColumn<>("Nome");
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));  // Assumes Cliente has a 'nome' property
+        table.getColumns().add(nomeCol);
+        
+    
+        // Populate table with clients
+        table.getItems().addAll(clientes);
+        
+    
+        // Create button to return to primary stage
+        Button returnButton = new Button("Return");
+        returnButton.setOnAction(event -> {start(primaryStage);
+;
+            // Code to return to primary stage goes here
+        });
+    
+        // Create VBox to hold table and button
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(table, returnButton);
+    
+        // Create scroll pane and add VBox to it
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(vbox);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+    
+        Scene scene = new Scene(scrollPane, 1000, 500);
+        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
+        table.prefWidthProperty().bind(scene.widthProperty().multiply(1));
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+     public void listarcorretores(List<Corretor> corretores, Stage primaryStage){
+        // Create table and columns
+        TableView<Corretor> table = new TableView<>();
+        TableColumn<Corretor, String> nomeCol = new TableColumn<>("Nome");
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));  // Assumes Cliente has a 'nome' property
+        table.getColumns().add(nomeCol);
+        
+    
+        // Populate table with clients
+        table.getItems().addAll();
+        
+    
+        // Create button to return to primary stage
+        Button returnButton = new Button("Return");
+        returnButton.setOnAction(event -> {start(primaryStage);
+;
+            // Code to return to primary stage goes here
+        });
+    
+        // Create VBox to hold table and button
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(table, returnButton);
+    
+        // Create scroll pane and add VBox to it
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(vbox);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+    
+        Scene scene = new Scene(scrollPane, 1000, 500);
+        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
+        table.prefWidthProperty().bind(scene.widthProperty().multiply(1));
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
 
     public void cadastrarCorretor(List<Corretor> corretores, List<Endereco> enderecos, Stage primaryStage){
 
@@ -926,6 +1003,13 @@ public class Main extends Application {
             cadastrarImoveis(imoveisDisp, imoveisManu, tiposImoveis, enderecos, proprietarios, primaryStage);
         });
 
+        listarClientesButton.setOnAction(event -> {
+            listarclientes(clientes, primaryStage);
+        });
+
+        listarCorretoresButton.setOnAction(event ->{
+            listarcorretores(corretores, primaryStage);
+        });
     }
 
 }
