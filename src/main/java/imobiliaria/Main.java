@@ -319,7 +319,7 @@ public class Main extends Application {
             dataPropText.getStyleClass().add("text");
             TextField dataPropInput = new TextField();
 
-            Text pixText = new Text("Creci: ");
+            Text pixText = new Text("Pix: ");
             pixText.getStyleClass().add("text");
             TextField pixInput = new TextField();
 
@@ -368,7 +368,7 @@ public class Main extends Application {
             dataText.getStyleClass().add("text");
             TextField dataInput = new TextField();
 
-            Text pontText = new Text("Creci: ");
+            Text pontText = new Text("Pontuação: ");
             pixText.getStyleClass().add("text");
             TextField pontInput = new TextField();
 
@@ -384,7 +384,7 @@ public class Main extends Application {
         razaoText.getStyleClass().add("text");
         TextField razaoInput = new TextField();
 
-        Text cpnjText = new Text("Razão social: ");
+        Text cpnjText = new Text("CNPJ: ");
         cpnjText.getStyleClass().add("text");
         TextField cpnjInput = new TextField(); 
             
@@ -519,6 +519,9 @@ public class Main extends Application {
 
                 String precoStr = precoInput.getText();
                 double preco = Double.parseDouble(precoStr);
+
+                String valorStr = valorInput.getText();
+                double valor = Double.parseDouble(valorStr);
             
                 String numCorre = numeroCorreInput.getText();
                 int numeroC = Integer.parseInt(numCorre);
@@ -572,7 +575,10 @@ public class Main extends Application {
                 if(corretores.contains(corretor) == false){
                     corretores.add(corretor);
                 }
-            
+
+                ContratoAluguelComercial contrato = new ContratoAluguelComercial(imovel, corretor, cliente, tempoInput.getText(), valor, razaoInput.getText(), cpnjInput.getText());
+                contratosComerciais.add(contrato);
+
         }  catch(NumberFormatException e){
             Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Tela de Erro");
