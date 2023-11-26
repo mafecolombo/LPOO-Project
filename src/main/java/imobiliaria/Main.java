@@ -93,11 +93,11 @@ public class Main extends Application {
         });
 
         listarClientesButton.setOnAction(event -> {
-            listarclientes(clientes, primaryStage);
+
         });
 
         listarCorretoresButton.setOnAction(event ->{
-            listarcorretores(corretores, primaryStage);
+
         });
     }
 
