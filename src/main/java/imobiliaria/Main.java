@@ -93,12 +93,84 @@ public class Main extends Application {
         });
 
         listarClientesButton.setOnAction(event -> {
-
+            listarclientes(clientes, primaryStage);
         });
 
         listarCorretoresButton.setOnAction(event ->{
-
+            listarcorretores(corretores, primaryStage);
         });
+    }
+
+    public void listarclientes(List<Cliente> clientes, Stage primaryStage){
+        // Create table and columns
+        TableView<Cliente> table = new TableView<>();
+        TableColumn<Cliente, String> nomeCol = new TableColumn<>("Nome");
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));  // Assumes Cliente has a 'nome' property
+        table.getColumns().add(nomeCol);
+
+
+        // Populate table with clients
+        table.getItems().addAll(clientes);
+
+
+        // Create button to return to primary stage
+        Button returnButton = new Button("Return");
+        returnButton.setOnAction(event -> {start(primaryStage);
+;
+            // Code to return to primary stage goes here
+        });
+
+        // Create VBox to hold table and button
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(table, returnButton);
+
+        // Create scroll pane and add VBox to it
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(vbox);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+
+        Scene scene = new Scene(scrollPane, 1000, 500);
+        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
+        table.prefWidthProperty().bind(scene.widthProperty().multiply(1));
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+     public void listarcorretores(List<Corretor> corretores, Stage primaryStage){
+        // Create table and columns
+        TableView<Corretor> table = new TableView<>();
+        TableColumn<Corretor, String> nomeCol = new TableColumn<>("Nome");
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));  // Assumes Cliente has a 'nome' property
+        table.getColumns().add(nomeCol);
+
+
+        // Populate table with clients
+        table.getItems().addAll();
+
+
+        // Create button to return to primary stage
+        Button returnButton = new Button("Return");
+        returnButton.setOnAction(event -> {start(primaryStage);
+;
+            // Code to return to primary stage goes here
+        });
+
+        // Create VBox to hold table and button
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(table, returnButton);
+
+        // Create scroll pane and add VBox to it
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(vbox);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+
+        Scene scene = new Scene(scrollPane, 1000, 500);
+        scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
+        table.prefWidthProperty().bind(scene.widthProperty().multiply(1));
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
