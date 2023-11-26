@@ -13,13 +13,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+//import javafx.scene.layout.BorderPane;
+//import javafx.scene.layout.StackPane;
 //import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class Main extends Application {
 
@@ -88,6 +92,13 @@ public class Main extends Application {
             cadastrarContrato(primaryStage, enderecos, clientes, corretores, proprietarios, contratosComerciais, imoveisDisp, imoveisManu, tiposImoveis);
         });
 
+        listarClientesButton.setOnAction(event -> {
+
+        });
+
+        listarCorretoresButton.setOnAction(event ->{
+
+        });
     }
 
     public static void main(String[] args) {
@@ -506,7 +517,7 @@ public class Main extends Application {
     
 
         }
-        menu(primaryStage, enderecos, clientes, corretores, proprietarios, contratosComerciais, imoveisDisp, imoveisManu, tiposImoveis);
+        start(primaryStage);
             
         });
 
