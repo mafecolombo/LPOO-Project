@@ -10,7 +10,18 @@ public class Proprietario extends Pessoa {
 
     @Override
     public String toString() {
-        return "Proprietario " + super.getNome() + "[pix = " + pix + "]";
+
+        return "Cliente " + super.getNome() + 
+        "[CPF = " + super.getCpf() + ", RG = " + super.getEndereco() + 
+        ", celular = " + super.getCelular() + ", data de nascimento = " 
+        + super.getDataNascimento() + ", pix = " + pix + "]";
     }
-    
+
+    public String getPix() {
+        return pix;
+    }
+
+    public void setPix(String pix) {
+        this.pix = pix;
+    }
 }

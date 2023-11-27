@@ -10,7 +10,19 @@ public class Corretor extends Pessoa {
 
     @Override
     public String toString() {
-        return "Corretor " + super.getNome() + "[creci = " + creci + "]";
+
+        return "Cliente " + super.getNome() + 
+        "[CPF = " + super.getCpf() + ", RG = " + super.getEndereco() + 
+        ", celular = " + super.getCelular() + ", data de nascimento = " 
+        + super.getDataNascimento() + ", creci = " + creci + "]";
+    }
+
+    public String getCreci() {
+        return creci;
+    }
+
+    public void setCreci(String creci) {
+        this.creci = creci;
     }
     
 }

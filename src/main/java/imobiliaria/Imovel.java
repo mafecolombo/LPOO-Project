@@ -26,6 +26,26 @@ public class Imovel implements Comparable<Imovel> {
     public String toString() {
         return "Imovel [tipo=" + tipo + ", endereco=" + endereco + ", area=" + area + ", preco=" + preco
                 + ", proprietario=" + proprietario + "]";
+    }
+
+    public TipoImovel getTipo() {
+        return tipo;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public Proprietario getProprietario() {
+        return proprietario;
     }    
     
     

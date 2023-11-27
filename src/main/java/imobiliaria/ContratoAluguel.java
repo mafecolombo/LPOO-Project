@@ -15,6 +15,26 @@ public class ContratoAluguel<T> {
         this.valor = valor;
     }
 
+    public Imovel getImovel() {
+        return imovel;
+    }
+
+    public Corretor getCorretor() {
+        return corretor;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public T getTempo() {
+        return tempo;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
     double calcularComissao(){
         return (0.1*valor);
     }

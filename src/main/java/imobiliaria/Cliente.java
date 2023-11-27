@@ -8,9 +8,27 @@ public class Cliente extends Pessoa {
         this.pontuacao = pontuacao;
     }
 
+
+    
     @Override
     public String toString() {
-        return "Cliente " + super.getNome() + "[pontuacao = " + pontuacao + "]";
+
+        return "Cliente " + super.getNome() + 
+        "[CPF = " + super.getCpf() + ", RG = " + super.getEndereco() + 
+        ", celular = " + super.getCelular() + ", data de nascimento = " 
+        + super.getDataNascimento() + ", pontuacao = " + pontuacao + "]";
+    }
+
+
+
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+
+
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
     }
     
 }

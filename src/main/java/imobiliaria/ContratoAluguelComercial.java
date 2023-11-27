@@ -2,13 +2,13 @@ package imobiliaria;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class ContratoAluguelComercial extends ContratoAluguel<Object> {
+public class ContratoAluguelComercial extends ContratoAluguel<String> {
 
     
     private String razaoSocial;
     private String cnpj;
    
-    public ContratoAluguelComercial(Imovel imovel, Corretor corretor, Cliente cliente, Object tempo, double valor,
+    public ContratoAluguelComercial(Imovel imovel, Corretor corretor, Cliente cliente, String tempo, double valor,
             String razaoSocial, String cnpj) {
         super(imovel, corretor, cliente, tempo, valor);
         this.razaoSocial = razaoSocial;
@@ -72,6 +72,14 @@ public class ContratoAluguelComercial extends ContratoAluguel<Object> {
             return false;}
 
         return true;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public String getCnpj() {
+        return cnpj;
     }
 
     
